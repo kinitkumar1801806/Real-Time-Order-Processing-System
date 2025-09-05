@@ -58,8 +58,7 @@ services:
       - sqlserver
 
   frontend:
-    build: ../frontend/order-portal
+    build: ../../frontend
+    container_name: angular-frontend
     ports:
       - "4200:80"
-    depends_on:
-      - orderservice
