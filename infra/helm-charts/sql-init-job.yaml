@@ -1,0 +1,21 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sql-init
+spec:
+  template:
+    spec:
+      containers:
+      - name: sql-init
+        image: mcr.microsoft.com/mssql-tools
+        command: ["/bin/sh","-c"]
+        args:
+          - /opt/mssql-tools/bin/sqlcmd -S sqlserver -U sa -P YourStrong!Passw0rd -d master -i /scripts/init.sql;
+        volumeMounts:
+        - name: sql-scripts
+          mountPath: /scripts
+      restartPolicy: OnFailure
+      volumes:
+      - name: sql-scripts
+        configMap:
+          name: sql-init-scripts

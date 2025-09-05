@@ -1,0 +1,20 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: cassandra-init
+spec:
+  template:
+    spec:
+      containers:
+      - name: cassandra-init
+        image: cassandra:4.1
+        command: ["/bin/sh","-c"]
+        args: ["cqlsh cassandra -f /scripts/init.cql"]
+        volumeMounts:
+        - name: cassandra-scripts
+          mountPath: /scripts
+      restartPolicy: OnFailure
+      volumes:
+      - name: cassandra-scripts
+        configMap:
+          name: cassandra-init-scripts
