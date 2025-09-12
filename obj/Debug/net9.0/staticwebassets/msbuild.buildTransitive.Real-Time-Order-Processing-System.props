@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../buildMultiTargeting/Real-Time-Order-Processing-System.props" />
+</Project>

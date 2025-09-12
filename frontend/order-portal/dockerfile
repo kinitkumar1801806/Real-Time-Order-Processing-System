@@ -1,0 +1,30 @@
+# Step 1: Build the Angular app
+FROM node:20 AS build
+
+# Set working directory
+WORKDIR /frontend/order-portal
+
+# Copy package.json and package-lock.json first (for caching)
+COPY /package*.json ./
+
+# Install dependencies
+RUN npm install
+
+# Copy the rest of the Angular app
+COPY / .
+
+# Build Angular app for production
+RUN npx ng build --configuration production
+
+
+# Step 2: Serve with Nginx
+FROM nginx:alpine
+
+# Copy Angular build output to Nginx
+COPY --from=build /dist/order-portal/browser /usr/share/nginx/html
+
+# Expose port 80
+EXPOSE 80
+
+# Start Nginx
+CMD ["nginx", "-g", "daemon off;"]
