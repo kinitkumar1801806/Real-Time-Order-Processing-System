@@ -9,7 +9,7 @@ namespace OrderService.Controllers
     public class OrderController : ControllerBase
     {
         private readonly string kafkaTopic = "orders";
-        private readonly string bootstrapServers = "kafka:9092";
+        private readonly string bootstrapServers = "localhost:9093";
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] Order order)
         {

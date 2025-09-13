@@ -1,7 +1,7 @@
-version: "3.9"
 services:
   sqlserver:
-    image: mcr.microsoft.com/mssql/server:2019-latest
+    image: mcr.microsoft.com/azure-sql-edge:latest
+    platform: linux/arm64
     container_name: sqlserver
     environment:
       SA_PASSWORD: "kinit@2603"
@@ -15,10 +15,11 @@ services:
 
   sqlserver-init:
     image: mcr.microsoft.com/mssql-tools
+    platform: linux/amd64
     depends_on:
       - sqlserver
     volumes:
-      - ./data/sqlserver:/scripts
+      - ../../data/sqlserver:/scripts
     entrypoint: /bin/bash -c "sleep 20 && /opt/mssql-tools/bin/sqlcmd -S sqlserver -U sa -P kinit@2603 -d master -i /scripts/init.sql"
 
   cassandra:
@@ -27,34 +28,34 @@ services:
     ports:
       - "9042:9042"
     volumes:
-      - ./data/cassandra:/docker-entrypoint-initdb.d
-
-  zookeeper:
-    image: bitnami/zookeeper:latest
-    container_name: zookeeper
-    ports:
-      - "2181:2181"
-    environment:
-      - ALLOW_ANONYMOUS_LOGIN=yes
+      - ../../data/cassandra:/docker-entrypoint-initdb.d
 
   kafka:
     image: bitnami/kafka:latest
     container_name: kafka
     ports:
-      - "9092:9092"
+      - "9093:9093"
+      - "9094:9094"
     environment:
-      - KAFKA_BROKER_ID=1
-      - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
-      - ALLOW_PLAINTEXT_LISTENER=yes
-      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://kafka:9092
-      - KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092
-    depends_on:
-      - zookeeper
+      # KRaft mode configs
+      KAFKA_ENABLE_KRAFT: yes
+      KAFKA_CFG_PROCESS_ROLES: broker,controller
+      KAFKA_CFG_NODE_ID: 1
+      KAFKA_CFG_CONTROLLER_QUORUM_VOTERS: 1@kafka:9094
+      KAFKA_CFG_LISTENERS: PLAINTEXT://:9093,CONTROLLER://:9094
+      KAFKA_CFG_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9093
+      KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP: CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT
+      KAFKA_CFG_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      ALLOW_PLAINTEXT_LISTENER: yes
+    volumes:
+      - kafka_data:/bitnami/kafka
 
   dotnetapp:
     build: ../../
     ports:
-      - "5000:80"
+      - "5136:5136"
+    environment:
+        - ASPNETCORE_URLS=http://+:5136
     depends_on:
       - sqlserver
       - cassandra
@@ -66,3 +67,6 @@ services:
       - "4200:80"
     depends_on:
       - dotnetapp
+
+volumes:
+  kafka_data:

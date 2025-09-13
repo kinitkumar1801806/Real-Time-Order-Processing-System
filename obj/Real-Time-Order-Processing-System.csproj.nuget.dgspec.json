@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/kinitkumar1801/Documents/Real-Time Order Processing System/Real-Time-Order-Processing-System/Real-Time-Order-Processing-System.csproj": {}
+    "/Users/kinitkumar1801/Documents/Real-Time-Order-Processing-System/Real-Time-Order-Processing-System/Real-Time-Order-Processing-System.csproj": {}
   },
   "projects": {
-    "/Users/kinitkumar1801/Documents/Real-Time Order Processing System/Real-Time-Order-Processing-System/Real-Time-Order-Processing-System.csproj": {
+    "/Users/kinitkumar1801/Documents/Real-Time-Order-Processing-System/Real-Time-Order-Processing-System/Real-Time-Order-Processing-System.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/kinitkumar1801/Documents/Real-Time Order Processing System/Real-Time-Order-Processing-System/Real-Time-Order-Processing-System.csproj",
+        "projectUniqueName": "/Users/kinitkumar1801/Documents/Real-Time-Order-Processing-System/Real-Time-Order-Processing-System/Real-Time-Order-Processing-System.csproj",
         "projectName": "Real-Time-Order-Processing-System",
-        "projectPath": "/Users/kinitkumar1801/Documents/Real-Time Order Processing System/Real-Time-Order-Processing-System/Real-Time-Order-Processing-System.csproj",
+        "projectPath": "/Users/kinitkumar1801/Documents/Real-Time-Order-Processing-System/Real-Time-Order-Processing-System/Real-Time-Order-Processing-System.csproj",
         "packagesPath": "/Users/kinitkumar1801/.nuget/packages/",
-        "outputPath": "/Users/kinitkumar1801/Documents/Real-Time Order Processing System/Real-Time-Order-Processing-System/obj/",
+        "outputPath": "/Users/kinitkumar1801/Documents/Real-Time-Order-Processing-System/Real-Time-Order-Processing-System/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/kinitkumar1801/.nuget/NuGet/NuGet.Config"

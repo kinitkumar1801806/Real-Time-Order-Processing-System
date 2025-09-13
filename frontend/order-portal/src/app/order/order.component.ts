@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { OrderService } from './order.service';
 import { FormsModule } from '@angular/forms';
 
@@ -15,6 +15,7 @@ export class OrderComponent {
   constructor(private orderService: OrderService) {}
 
   placeOrder() {
+    console.log(this.order.customer);
     this.orderService.placeOrder(this.order).subscribe(res => {
       this.message = res.message;
     });

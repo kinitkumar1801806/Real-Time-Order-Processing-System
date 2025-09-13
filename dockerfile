@@ -11,9 +11,9 @@ COPY . .
 RUN dotnet publish -c Release -o /out
 
 # Stage 2: Runtime
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
+FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS runtime
 WORKDIR /app
 COPY --from=build /out .
 
-EXPOSE 8080
+EXPOSE 5136
 ENTRYPOINT ["dotnet", "Real-Time-Order-Processing-System.dll"]

@@ -12,7 +12,7 @@ namespace OrderService.Services
 {
     public class OrderConsumerService
     {
-        private readonly string bootstrapServers = "kafka:9092";
+        private readonly string bootstrapServers = "localhost:9093";
         private readonly string kafkaTopic = "orders";
         private readonly string groupId = "order-consumer-group";
         private readonly string _connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["SqlServer"].ConnectionString;

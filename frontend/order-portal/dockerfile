@@ -21,7 +21,7 @@ RUN npx ng build --configuration production
 FROM nginx:alpine
 
 # Copy Angular build output to Nginx
-COPY --from=build /dist/order-portal/browser /usr/share/nginx/html
+COPY --from=build frontend/order-portal/dist/order-portal/browser /usr/share/nginx/html
 
 # Expose port 80
 EXPOSE 80
