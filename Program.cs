@@ -1,3 +1,5 @@
+using OrderService.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add CORS
@@ -16,6 +18,7 @@ builder.Services.AddCors(options =>
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddHostedService<OrderConsumerService>();
 
 var app = builder.Build();
 

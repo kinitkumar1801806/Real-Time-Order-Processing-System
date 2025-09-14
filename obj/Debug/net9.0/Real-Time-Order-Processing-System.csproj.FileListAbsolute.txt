@@ -205,7 +205,6 @@
 /Users/kinitkumar1801/Documents/Real-Time Order Processing System/Real-Time-Order-Processing-System/bin/Debug/net9.0/Swashbuckle.AspNetCore.Swagger.dll
 /Users/kinitkumar1801/Documents/Real-Time Order Processing System/Real-Time-Order-Processing-System/bin/Debug/net9.0/Swashbuckle.AspNetCore.SwaggerGen.dll
 /Users/kinitkumar1801/Documents/Real-Time Order Processing System/Real-Time-Order-Processing-System/bin/Debug/net9.0/Swashbuckle.AspNetCore.SwaggerUI.dll
-/Users/kinitkumar1801/Documents/Real-Time-Order-Processing-System/Real-Time-Order-Processing-System/bin/Debug/net9.0/backend/web.config
 /Users/kinitkumar1801/Documents/Real-Time-Order-Processing-System/Real-Time-Order-Processing-System/bin/Debug/net9.0/appsettings.Development.json
 /Users/kinitkumar1801/Documents/Real-Time-Order-Processing-System/Real-Time-Order-Processing-System/bin/Debug/net9.0/appsettings.json
 /Users/kinitkumar1801/Documents/Real-Time-Order-Processing-System/Real-Time-Order-Processing-System/bin/Debug/net9.0/frontend/order-portal/package-lock.json

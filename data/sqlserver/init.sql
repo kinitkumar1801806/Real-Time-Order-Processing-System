@@ -3,7 +3,7 @@ GO
 USE OrderDb
 GO
 CREATE TABLE Orders(
-    OrderTd NVARCHAR(50) PRIMARY KEY,
+    OrderId NVARCHAR(50) PRIMARY KEY,
     Customer NVARCHAR(100),
     Amount FLOAT,
     Status NVARCHAR(20)
